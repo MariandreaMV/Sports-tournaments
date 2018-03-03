@@ -32,8 +32,8 @@ class LoginController extends Controller
         if ($userAdmin == 1) {
             return '/admin';
         }
-        
-        return '';
+
+        return '/';
     }
 
     /**
