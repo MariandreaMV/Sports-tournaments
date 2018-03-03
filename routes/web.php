@@ -18,15 +18,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/new-team', 'HomeController@newTeam')->name('newTeam');
 
 
+// General routes
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('/new-team', 'HomeController@newTeam')->name('newTeam');
+});
 
-Route::get('admin', 'Admin\AdminController@index');
-Route::resource('admin/roles', 'Admin\RolesController');
-Route::resource('admin/permissions', 'Admin\PermissionsController');
-Route::resource('admin/users', 'Admin\UsersController');
-Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
-Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
-Route::resource('admin/teams', 'Admin\\teamsController');
-Route::resource('admin/tournaments', 'Admin\\tournamentsController');
+
+// Admin panel
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('admin', 'Admin\AdminController@index');
+  Route::resource('admin/roles', 'Admin\RolesController');
+  Route::resource('admin/permissions', 'Admin\PermissionsController');
+  Route::resource('admin/users', 'Admin\UsersController');
+  Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
+  Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+  Route::resource('admin/teams', 'Admin\\teamsController');
+  Route::resource('admin/tournaments', 'Admin\\tournamentsController');
+});
