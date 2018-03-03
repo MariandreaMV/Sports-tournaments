@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // General routes
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/new-team', 'HomeController@newTeam')->name('newTeam');
+  Route::get('/new-register', 'HomeController@register');
+  Route::post('/new-register/create', 'HomeController@create');
 });
 
 

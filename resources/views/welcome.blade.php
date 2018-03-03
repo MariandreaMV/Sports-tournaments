@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                       
+
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -84,7 +84,7 @@
                 @auth
                 <div class="links">
                     <a href="{{ url('new-team') }}">Create new team </a>
-                    <a href="">Register team to a tournament</a>
+                    <a href="/new-register">Register team to a tournament</a>
                     <?php if (\Auth::user()->status==1): ?>
                     <a href="">Register a new tournament</a>
                     <a href="">Teams in tournaments</a>
