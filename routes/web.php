@@ -38,4 +38,5 @@ Route::group(['middleware' => ['auth']], function() {
   Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
   Route::resource('admin/teams', 'Admin\\teamsController');
   Route::resource('admin/tournaments', 'Admin\\tournamentsController');
+  Route::resource('admin/registers', 'Admin\\RegistersController');
 });
