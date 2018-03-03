@@ -14,6 +14,7 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->string('team_name')->nullable();
             $table->string('short_name')->nullable();
@@ -21,7 +22,8 @@ class CreateTeamsTable extends Migration
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();
-            });
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**

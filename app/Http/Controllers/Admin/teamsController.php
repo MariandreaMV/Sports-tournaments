@@ -55,13 +55,13 @@ class teamsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'team_name' => 'required',
-			'short_name' => 'required',
-			'date' => 'required',
-			'email' => 'required'
-		]);
+    			'team_name' => 'required',
+    			'short_name' => 'required',
+    			'date' => 'required',
+    			'email' => 'required'
+    		]);
         $requestData = $request->all();
-        
+
         team::create($requestData);
 
         return redirect('admin/teams')->with('flash_message', 'team added!');
@@ -112,7 +112,7 @@ class teamsController extends Controller
 			'email' => 'required'
 		]);
         $requestData = $request->all();
-        
+
         $team = team::findOrFail($id);
         $team->update($requestData);
 
