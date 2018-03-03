@@ -51,15 +51,11 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required', 'roles' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required']);
 
         $data = $request->except('password');
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
-
-        foreach ($request->roles as $role) {
-            $user->assignRole($role);
-        }
 
         return redirect('admin/users')->with('flash_message', 'User added!');
     }
@@ -109,7 +105,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['name' => 'required', 'email' => 'required', 'roles' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required']);
 
         $data = $request->except('password');
         if ($request->has('password')) {
@@ -118,11 +114,6 @@ class UsersController extends Controller
 
         $user = User::findOrFail($id);
         $user->update($data);
-
-        $user->roles()->detach();
-        foreach ($request->roles as $role) {
-            $user->assignRole($role);
-        }
 
         return redirect('admin/users')->with('flash_message', 'User updated!');
     }
