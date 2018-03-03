@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/admin') }}">Dashboard <span class="sr-only">(current)</span></a></li>
+                      <!--  <li><a href="{{ url('/admin') }}">Dashboard <span class="sr-only">(current)</span></a></li>-->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -102,7 +102,7 @@
         <script type="text/javascript">
             $(function () {
                 // Navigation active
-                $('ul.navbar-nav a[href="{{ "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"]').closest('li').addClass('active');
+               $('ul.navbar-nav a[href="{{ "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"]').closest('li').addClass('active');
             });
         </script>
 
