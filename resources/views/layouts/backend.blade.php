@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <!-- Scripts -->
         <script>
@@ -54,13 +55,13 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle bb" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu bb" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}"
+                                        <a class="bb" href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -93,7 +94,7 @@
 
         <div class="container">
             Created by
-            <a href="http://www.github.com/MariandreaMV">Mariandrea Maldonado</a> and <a href="http://www.github.com/PedroLabrador">Pedro Labrador</a>
+            <a class="authors" href="http://www.github.com/MariandreaMV">Mariandrea Maldonado</a> and <a class="authors" href="http://www.github.com/PedroLabrador">Pedro Labrador</a>
 
             <br/>
         </div>
