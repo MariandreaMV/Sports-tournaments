@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Team;
+use App\Tournament;
 use App\Register;
 use Illuminate\Http\Request;
 
@@ -40,7 +42,12 @@ class RegistersController extends Controller
      */
     public function create()
     {
-        return view('admin.registers.create');
+        $teams = Team::all();
+        $tournaments = Tournament::all()->where('status', 1);
+        return view('admin.registers.create', [
+          'teams' => $teams,
+          'tournaments' => $tournaments
+        ]);
     }
 
     /**
@@ -52,9 +59,9 @@ class RegistersController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Register::create($requestData);
 
         return redirect('admin/registers')->with('flash_message', 'Register added!');
@@ -70,8 +77,13 @@ class RegistersController extends Controller
     public function show($id)
     {
         $register = Register::findOrFail($id);
-
-        return view('admin.registers.show', compact('register'));
+        $team = Team::where('id', $register->team_id)->first();
+        $tournament = Tournament::where('id', $register->tournament_id)->first();
+        return view('admin.registers.show', [
+          'register' => $register,
+          'tournament' => $tournament,
+          'team' => $team
+        ]);
     }
 
     /**
@@ -84,8 +96,13 @@ class RegistersController extends Controller
     public function edit($id)
     {
         $register = Register::findOrFail($id);
-
-        return view('admin.registers.edit', compact('register'));
+        $team = Team::where('id', $register->team_id)->first();
+        $tournament = Tournament::where('id', $register->tournament_id)->first();
+        return view('admin.registers.edit', [
+          'register' => $register,
+          'tournament' => $tournament,
+          'team' => $team
+        ]);
     }
 
     /**
@@ -98,9 +115,9 @@ class RegistersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $register = Register::findOrFail($id);
         $register->update($requestData);
 
