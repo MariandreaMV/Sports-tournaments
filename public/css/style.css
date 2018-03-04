@@ -1,0 +1,99 @@
+html, body {
+    background-color: #000!important;
+    color: #ccc!important;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+.authors {
+  text-decoration: none!important;
+  color: lightblue!important
+}
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a {
+  color: #ccc!important
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+select {
+    color: #ccc!important;
+    background: transparent;
+    border: 1px solid #ccc!important;
+    background-color: #2d3f47!important
+}
+input[type=text], input[type=email], input[type=date], input[type=password], input[type=number] {
+    background-color: #2d3f47;
+    border: 3px solid #2d3f47;
+    color: #ccc
+}
+.panel-body a:hover {
+  color: lightblue!important;
+  background-color: #111!important
+}
+input[type=text]:hover, input[type=email]:hover, input[type=date]:hover, input[type=password]:hover, input[type=password]:hover {
+    border: 3px solid #555
+}
+.btn {
+    background-color: #13262d!important;
+    color: #ccc;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: 1px solid #13262d!important
+}
+.btn:hover {
+  color: lightblue!important;
+  border: 1px solid #ccc!important
+}
+.panel, .panel-heading, .navbar, .bb, .dropdown-toggle, .dropdown-menu {
+    background-color: #000!important;
+    color: #ccc!important
+}
+.bb a:hover {
+  color: lightblue!important;
+  border: 1px solid #ccc!important
+}
+.dropdown-menu {
+  border: 1px solid #ccc!important
+}
+.dropdown-menu:hover {
+  background-color: #000!important
+}
