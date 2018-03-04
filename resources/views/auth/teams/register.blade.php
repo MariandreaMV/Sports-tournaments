@@ -30,6 +30,14 @@
                           @endif
                         @endif
 
+                         @if (isset($exists))
+                          @if ($exists)
+                          <ul class="alert alert-warning">
+                              <li>team already registered in this category!!</li>
+                          </ul>
+                          @endif
+                        @endif
+
                         <form class="form" action="/new-register/create" method="post">
                           {{ csrf_field() }}
                           <div class="col-md-2"></div>
@@ -67,7 +75,7 @@
                               </select>
                             </div>
                             <div class="form-group">
-                              <button class="btn btn-primary" type="submit" name="button">Registrar</button>
+                              <button class="btn btn-primary" type="submit" name="button">Register</button>
                             </div>
                           </div>
                         </form>
