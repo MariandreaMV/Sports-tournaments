@@ -19,6 +19,9 @@ class teamsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $allowed = array('id', 'team_name', 'short_name', 'date');
+        $sort = in_array($request->get('sort'), $allowed) ? $request->get('sort') : 'id';
+        $order = $request->get('order') === 'asc' ? 'desc' : 'asc';
 
         if (!empty($keyword)) {
             $teams = team::where('team_name', 'LIKE', "%$keyword%")
@@ -29,10 +32,13 @@ class teamsController extends Controller
                 ->orWhere('website', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $teams = team::paginate($perPage);
+            $teams = team::orderBy($sort, $order)->paginate($perPage);
         }
 
-        return view('admin.teams.index', compact('teams'));
+        return view('admin.teams.index', [
+          'teams' => $teams,
+          'order' => $order
+        ]);
     }
 
     /**

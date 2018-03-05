@@ -32,7 +32,21 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+                                      <form method="get">
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="name">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="email">
+                                        </th>
+                                        <th>
+                                          Actions
+                                        </th>
+                                        <input type="hidden" name="order" value="{{$order}}">
+                                      </form>
                                     </tr>
                                 </thead>
                                 <tbody>

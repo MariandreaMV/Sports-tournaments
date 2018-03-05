@@ -18,15 +18,21 @@ class UsersController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 15;
+        $allowed = array('id', 'name', 'email');
+        $sort = in_array($request->get('sort'), $allowed) ? $request->get('sort') : 'id';
+        $order = $request->get('order') === 'asc' ? 'desc' : 'asc';
 
         if (!empty($keyword)) {
             $users = User::where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $users = User::paginate($perPage);
+            $users = User::orderBy($sort, $order)->paginate($perPage);
         }
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', [
+          'users' => $users,
+          'order' => $order
+        ]);
     }
 
     /**

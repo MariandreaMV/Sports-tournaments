@@ -30,13 +30,30 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Team Name</th><th>Short Name</th><th>Date</th><th>Actions</th>
+                                      <form method="get">
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="team_name">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="short_name">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="date">
+                                        </th>
+                                        <th>
+                                          Actions
+                                        </th>
+                                        <input type="hidden" name="order" value="{{$order}}">
+                                      </form>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($teams as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->team_name }}</td><td>{{ $item->short_name }}</td><td>{{ $item->date }}</td>
                                         <td>
                                             <a href="{{ url('/admin/teams/' . $item->id) }}" title="View team"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

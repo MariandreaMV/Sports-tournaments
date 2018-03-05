@@ -32,13 +32,30 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>Date</th><th>Status</th><th>Actions</th>
+                                      <form method="get">
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="name">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="date">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="status">
+                                        </th>
+                                        <th>
+                                          Actions
+                                        </th>
+                                        <input type="hidden" name="order" value="{{$order}}">
+                                      </form>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($tournaments as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td><td>{{ $item->date }}</td><td>{{ $item->status }}</td>
                                         <td>
                                             <a href="{{ url('/admin/tournaments/' . $item->id) }}" title="View tournament"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

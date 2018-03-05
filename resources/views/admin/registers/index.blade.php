@@ -33,13 +33,33 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Tournament Id</th><th>Team Id</th><th>N Participants</th><th>Category</th><th>Actions</th>
+                                      <form method="get">
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="tournament_id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="team_id">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="n_participants">
+                                        </th>
+                                        <th>
+                                          <input class="btn-rm" type="submit" name="sort" value="category">
+                                        </th>
+                                        <th>
+                                          Actions
+                                        </th>
+                                        <input type="hidden" name="order" value="{{$order}}">
+                                      </form>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($registers as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->tournament_id }}</td><td>{{ $item->team_id }}</td><td>{{ $item->n_participants }}</td><td>{{ $item->category }}</td>
                                         <td>
                                             <a href="{{ url('/admin/registers/' . $item->id) }}" title="View Register"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

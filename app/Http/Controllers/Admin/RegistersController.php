@@ -21,6 +21,9 @@ class RegistersController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $allowed = array('id', 'tournament_id', 'team_id', 'n_participants', 'category');
+        $sort = in_array($request->get('sort'), $allowed) ? $request->get('sort') : 'id';
+        $order = $request->get('order') === 'asc' ? 'desc' : 'asc';
 
         if (!empty($keyword)) {
             $registers = Register::where('tournament_id', 'LIKE', "%$keyword%")
@@ -29,10 +32,13 @@ class RegistersController extends Controller
                 ->orWhere('category', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $registers = Register::paginate($perPage);
+            $registers = Register::orderBy($sort, $order)->paginate($perPage);
         }
 
-        return view('admin.registers.index', compact('registers'));
+        return view('admin.registers.index', [
+          'registers' => $registers,
+          'order' => $order
+        ]);
     }
 
     /**

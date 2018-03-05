@@ -19,6 +19,9 @@ class tournamentsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $allowed = array('id', 'name', 'date', 'status');
+        $sort = in_array($request->get('sort'), $allowed) ? $request->get('sort') : 'id';
+        $order = $request->get('order') === 'asc' ? 'desc' : 'asc';
 
         if (!empty($keyword)) {
             $tournaments = tournament::where('name', 'LIKE', "%$keyword%")
@@ -26,10 +29,13 @@ class tournamentsController extends Controller
                 ->orWhere('status', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $tournaments = tournament::paginate($perPage);
+            $tournaments = tournament::orderBy($sort, $order)->paginate($perPage);
         }
 
-        return view('admin.tournaments.index', compact('tournaments'));
+        return view('admin.tournaments.index', [
+          'tournaments' => $tournaments,
+          'order' => $order
+        ]);
     }
 
     /**
@@ -57,7 +63,7 @@ class tournamentsController extends Controller
 			'status' => 'required'
 		]);
         $requestData = $request->all();
-        
+
         tournament::create($requestData);
 
         return redirect('admin/tournaments')->with('flash_message', 'tournament added!');
@@ -107,7 +113,7 @@ class tournamentsController extends Controller
 			'status' => 'required'
 		]);
         $requestData = $request->all();
-        
+
         $tournament = tournament::findOrFail($id);
         $tournament->update($requestData);
 
