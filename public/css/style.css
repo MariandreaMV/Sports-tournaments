@@ -97,3 +97,7 @@ input[type=text]:hover, input[type=email]:hover, input[type=date]:hover, input[t
 .dropdown-menu:hover {
   background-color: #000!important
 }
+.btn-rm {
+  border: none;
+  background-color: black
+}
