@@ -9,8 +9,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Teams</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/teams/create') }}" class="btn btn-success btn-sm" title="Add New team">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/') }}" class="btn btn-success btn-sm" title="Add New team">
+                            <i class="fa fa" aria-hidden="true"></i> Back
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/teams', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}

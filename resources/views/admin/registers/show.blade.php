@@ -27,7 +27,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $register->id }}</td>
                                     </tr>
-                                    <tr><th> Tournament </th><td> {{ $tournament->name }} </td></tr><tr><th> Team </th><td> {{ $team->team_name }} </td></tr><tr><th> N Participants </th><td> {{ $register->n_participants }} </td></tr><tr><th> Category </th><td> {{ $register->category }} </td></tr>
+                                    <tr><th> Tournament </th><td> {{ $tournament->name }} </td></tr><tr><th> Team </th><td><a href= '/admin/teams/{{$team->id}}'> {{ $team->team_name }} </a></td></tr><tr><th> N Participants </th><td> {{ $register->n_participants }} </td></tr><tr><th> Category </th><td> {{ $register->category }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

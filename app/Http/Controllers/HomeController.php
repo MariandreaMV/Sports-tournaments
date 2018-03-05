@@ -110,16 +110,34 @@ class HomeController extends Controller
         ]);
         $success = true;
       }
-      
+      /*
       $teams = Team::all()->where('user_id', \Auth::user()->id);
       $tournaments = Tournament::all()->where('status', 1);
-
+      
       return view('auth.teams.register', [
         'teams' => $teams,
         'tournaments' => $tournaments,
         'success' => $success,
         'exists' => $exists
-      ]);
+      ]);*/
+      
+      $team = Team::where('id', $request->input('team'))->first();
+      $tournaments = Register::all()->where('team_id', $team->id);
+      return view('auth.teams.show',[
+          'team'=>$team->team_name,
+          'tournaments' => $tournaments
+        ]);
+      
     }
+
+    public function showT($id){
+       
+        $tournament = tournament::findOrFail($id);
+
+        return view('auth.tournaments.show', compact('tournament'));
+
+    }
+
+
     /*--------------------end tournaments-----------------------------*/
 }

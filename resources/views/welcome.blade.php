@@ -17,7 +17,8 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-
+                        <a href="{{ url('/logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -31,13 +32,17 @@
                 </div>
                 @auth
                 <div class="links">
-                    <a href="{{ url('new-team') }}">Create new team </a>
-                    <a href="/new-register">Register team to a tournament</a>
+                    
                     <?php if (\Auth::user()->status==1): ?>
-                    <a href="">Register a new tournament</a>
-                    <a href="">Teams in tournaments</a>
-                    <a href="">Tournaments</a>
-                    <a href="{{ url('/admin') }}">Admin</a>
+                        <!--</div><a href="/admin/registers/create">Register team to a tournament</a>-->
+                        <a href="/admin/tournaments/create">Create New tournament</a>
+                        <a href="/admin/registers">Teams in tournaments</a>
+                        <a href="/admin/tournaments">Tournaments</a>
+                        <a href="/admin/teams">Teams</a>
+                        <a href="/admin/users">Accounts</a>
+                    <?php else: ?>
+                        <a href="{{ url('new-team') }}">Create new team </a>
+                        <a href="/new-register">Register team to a tournament</a>
                     <?php endif ?>
                 </div>
                 @endauth

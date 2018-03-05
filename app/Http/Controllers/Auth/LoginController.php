@@ -28,11 +28,6 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        $userAdmin = \Auth::user()->status;
-        if ($userAdmin == 1) {
-            return '/admin';
-        }
-
         return '/';
     }
 

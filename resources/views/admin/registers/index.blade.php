@@ -12,6 +12,9 @@
                         <a href="{{ url('/admin/registers/create') }}" class="btn btn-success btn-sm" title="Add New Register">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        <a href="{{ url('/') }}" class="btn btn-success btn-sm" title="Add New Register">
+                            <i class="fa fa" aria-hidden="true"></i> Back
+                        </a>
 
                         <form method="GET" action="{{ url('/admin/registers') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                             <div class="input-group">

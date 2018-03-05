@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function() {
   Route::post('/new-team/create', 'HomeController@newTeamcreate');
   Route::get('/new-register', 'HomeController@register');
   Route::post('/new-register/create', 'HomeController@create');
+  Route::get('auth/tournaments/{team_id}', 'HomeController@showT');
+
 });
 
 
